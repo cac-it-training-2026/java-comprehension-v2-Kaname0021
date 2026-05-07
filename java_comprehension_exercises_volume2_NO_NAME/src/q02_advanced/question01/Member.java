@@ -1,31 +1,39 @@
-package q01_basic.question04;
+package q02_advanced.question01;
 
-class Member {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Member {
+
 	private int id;
+	private String password;
+	private String name;
+	private int age;
+	private int rank;
 
-	/**
-	 * @param id
-	 * @param password
-	 * @param name
-	 * @param age
-	 * @param rank
-	 */
+	private List<Coupon> coupons;
+
+	//コンストラクタ
 	public Member() {
 
 	}
 
 	public Member(int id, String password, String name, int age, int rank) {
+
 		this.id = id;
 		this.password = password;
 		this.name = name;
 		this.age = age;
 		this.rank = rank;
-	}
 
-	private String password;
-	private String name;
-	private int age;
-	private int rank;
+		this.coupons = new ArrayList<>();
+
+		Coupon c1 = new Coupon(1, 0.5, "最初の特典");
+		Coupon c2 = new Coupon(2, 0.25, "今月の特典");
+
+		coupons.add(c1);
+		coupons.add(c2);
+	}
 
 	/**
 	 * @return id
@@ -97,14 +105,30 @@ class Member {
 		this.rank = rank;
 	}
 
+	/**
+	 * @return coupons
+	 */
+	public List<Coupon> getCoupons() {
+		return coupons;
+	}
+
+	/**
+	 * @param coupons セットする coupons
+	 */
+	public void setCoupons(List<Coupon> coupons) {
+		this.coupons = coupons;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", age=" + age + ", rank=" + rank
+				+ ", coupons=" + coupons + "]";
+	}
+
 	public void showMember() {
-		System.out.println("***MEMBER DATA***");
-		System.out.println("id:" + id);
-		System.out.println("password:" + password);
-		System.out.println("name:" + name);
-		System.out.println("age:" + age);
-		System.out.println("rank:" + rank);
-		System.out.println("*****************");
+
+		System.out.println(toString());
+		System.out.println("******************");
 	}
 
 }
